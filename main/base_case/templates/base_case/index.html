@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список тест кейсов</title>
+</head>
+<body>
+{% if list_cases %}
+    <ul>
+        {% for case in list_cases %}
+            <li><a href="{% url 'base_case:detail_case' case.id %}">{{ case.id }} {{ case.title }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Что то ничего не нашлось(</p>
+{% endif %}
+</body>
+</html>
