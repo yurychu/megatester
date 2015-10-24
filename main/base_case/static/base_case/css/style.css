@@ -1,0 +1,7 @@
+body {
+    background: lightblue url("../images/material.jpg") no-repeat right top;
+}
+
+li a {
+    color: green;
+}
