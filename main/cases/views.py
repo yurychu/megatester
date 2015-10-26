@@ -7,7 +7,7 @@ from .models import Cases
 
 # Create your views here.
 
-class CasesView(generic.ListView):
+class ListCasesView(generic.ListView):
     template_name = "cases/index.html"
     context_object_name = "list_cases"
 
@@ -24,3 +24,4 @@ class DetailCase(generic.DetailView):
 # def detail_case(request, case_id):
 #     case = get_object_or_404(Cases, pk=case_id)
 #     return render(request, 'cases/detail_case.html', {"case": case})
+

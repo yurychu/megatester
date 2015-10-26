@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <title>Список тест кейсов</title>
     {% load staticfiles %}
-    <link rel="stylesheet" type="text/css" href="{% static 'base_case/css/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'cases/css/style.css' %}" />
 </head>
 <body>
 {% if list_cases %}
     <ul>
         {% for case in list_cases %}
-            <li><a href="{% url 'base_case:detail_case' case.id %}">{{ case.id }} {{ case.title }}</a></li>
+            <li><a href="{% url 'cases:detail_case' case.id %}">{{ case.id }} {{ case.title }}</a></li>
         {% endfor %}
     </ul>
 {% else %}
