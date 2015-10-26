@@ -5,6 +5,8 @@ from django.views import generic
 from .models import Cases
 from .forms import GeneratorForm
 from django.utils import timezone
+from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -27,16 +29,17 @@ class DetailCase(generic.DetailView):
 #     case = get_object_or_404(Cases, pk=case_id)
 #     return render(request, 'cases/detail_case.html', {"case": case})
 
+@login_required()
 def show_generator(request):
     form = GeneratorForm()
-    return render(request, 'cases/generator.html', {'form':form})
+    return render(request, 'cases/generator.html', {'form': form})
 
 
 def generate(request):
     name = request.POST['name']
     plan = request.POST['plan']
 
-    base = Cases(title=name, text=plan, date=timezone.now())
+    base = Cases(title=name, text=plan, date=timezone.now(), user=request.user)
     base.save()
 
     arg = {
