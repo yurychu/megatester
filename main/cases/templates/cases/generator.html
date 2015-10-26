@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title></title>
 </head>
 <body>
-<form action="{% url 'loginsystem:login' %}" method="POST">
+    <form action="{% url 'cases:generate' %}" method="POST">
     {% csrf_token %}
     <table>
         {{ form.as_table }}
     </table>
-    <input type="submit" value="Войти">
+    <input type="submit" value="Сгенерировать">
 </form>
 </body>
 </html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h3>Ваш сценарий занесен в базу</h3>
+    <p>
+        <h2>Название</h2>
+        {{ name }}
+    </p>
+    <p>
+        <h2>Содержание</h2>
+        {{ plan }}
+    </p>
+    <a href="{% url 'launcher:show_start_page' %}">На главную</a>
+</body>
+</html>

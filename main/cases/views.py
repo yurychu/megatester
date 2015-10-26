@@ -3,6 +3,8 @@ from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.views import generic
 from .models import Cases
+from .forms import GeneratorForm
+from django.utils import timezone
 
 
 # Create your views here.
@@ -25,3 +27,20 @@ class DetailCase(generic.DetailView):
 #     case = get_object_or_404(Cases, pk=case_id)
 #     return render(request, 'cases/detail_case.html', {"case": case})
 
+def show_generator(request):
+    form = GeneratorForm()
+    return render(request, 'cases/generator.html', {'form':form})
+
+
+def generate(request):
+    name = request.POST['name']
+    plan = request.POST['plan']
+
+    base = Cases(title=name, text=plan, date=timezone.now())
+    base.save()
+
+    arg = {
+        "name": name,
+        "plan": plan,
+    }
+    return render(request, 'cases/result.html', arg)
