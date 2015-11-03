@@ -29,7 +29,7 @@ class DetailCase(generic.DetailView):
 #     case = get_object_or_404(Cases, pk=case_id)
 #     return render(request, 'cases/detail_case.html', {"case": case})
 
-@login_required()
+
 def show_generator(request):
     form = GeneratorForm()
     return render(request, 'cases/generator.html', {'form': form})
