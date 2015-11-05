@@ -10,16 +10,37 @@ from django.views import generic
 
 # Create your views here.
 
-
-def show_login_bar(request):
-    if request.user.is_authenticated():
-        return HttpResponseRedirect(reverse("cases:index"))
-    else:
-        return render(request, 'loginsystem/index.html')
+#
+# def show_login_bar(request):
+#     if request.user.is_authenticated():
+#         return HttpResponseRedirect(reverse("cases:index"))
+#     else:
+#         return render(request, 'loginsystem/index.html')
 
 
 def login(request):
-    pass
+    args = {}
+    if request.method == 'POST':
+        username = request.POST["username"]
+        password = request.POST["password"]
+        user = auth.authenticate(username=username, password=password)
+        if user is not None:
+            if user.is_active:
+                auth.login(request, user)
+                return HttpResponseRedirect(reverse("launcher:launch"))
+            else:
+                args['form'] = LoginForm(request.POST)
+                args['error_message'] = "Вы не активный пользователь, обратитесь к администратоу"
+                return render(request, 'loginsystem/login_page.html', args)
+        else:
+            args['form'] = LoginForm(request.POST)
+            args['error_message'] = "Не верный логин пользователя или пароль"
+            return render(request, 'loginsystem/login_page.html', args)
+    else:
+        args['form'] = LoginForm()
+        return render(request, 'loginsystem/login_page.html', args)
+
+
 
 #
 # def get_name1(request):

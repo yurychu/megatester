@@ -5,7 +5,9 @@
     <title></title>
 </head>
 <body>
-    <a href="{% url 'cases:list_cases' %}">Тест-кейсы</a>
-    <a href="{% url 'cases:generator' %}">Генератор тестового плана</a>
+    <ul>
+        <li><a href="{% url 'plans:list_plans' %}">Тестовые планы</a></li>
+        <li><a href="{% url 'plans:create_plan' %}">Создать тестовый план</a></li>
+    </ul>
 </body>
 </html>

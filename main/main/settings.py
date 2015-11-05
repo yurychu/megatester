@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'loginsystem',
     'launcher',
     'cases',
+    'plans',
 )
 
 MIDDLEWARE_CLASSES = (

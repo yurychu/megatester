@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список тест кейсов</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'cases/css/style.css' %}" />
+</head>
+<body>
+{% if list_plans %}
+    <ul>
+        {% for plan in list_plans %}
+            <li><a href="{% url 'plans:detail_plan' plan.id %}">{{ plan.id }} {{ plan.title }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Что то ничего не нашлось(</p>
+{% endif %}
+</body>
+</html>

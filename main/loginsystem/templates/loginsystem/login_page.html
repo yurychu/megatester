@@ -5,6 +5,9 @@
     <title>Login</title>
 </head>
 <body>
+
+    {{ error_message }}
+
 <form action="{% url 'loginsystem:login' %}" method="POST">
     {% csrf_token %}
     <table>
