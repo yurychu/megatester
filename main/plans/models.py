@@ -43,4 +43,7 @@ class Processes(models.Model):
     """
     name = models.CharField("Название процесса", max_length=200)
     species = models.ForeignKey(Species)
-    
+
+    class Meta:
+        db_table = "processes"
+
