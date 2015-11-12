@@ -10,7 +10,7 @@
 {% if list_plans %}
     <ul>
         {% for plan in list_plans %}
-            <li><a href="{% url 'plans:detail_plan' plan.id %}">{{ plan.id }} {{ plan.title }}</a></li>
+            <li><a href="{% url 'plans:detail_plan' plan.id %}">{{ plan.id }}. {{ plan.title }}</a></li>
         {% endfor %}
     </ul>
 {% else %}

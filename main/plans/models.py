@@ -42,6 +42,7 @@ class Plans(models.Model):
     stand_user = models.CharField("Пользователь, под которым проводится проверка", max_length=50)
 
     process = models.ForeignKey(Processes, verbose_name="Процесс")
+    species = models.ForeignKey(Species, verbose_name="Вид деятельности")
 
     date = models.DateTimeField("Дата создания плана")
     text = models.TextField("Текст плана")

@@ -5,12 +5,18 @@
     <title>{{ plan.title }}</title>
 </head>
 <body>
-<h1>
-    {{ plan.title }}
-</h1>
-<p>
-    {{ plan.text }}
-</p>
+
+    <h1> Назание плана {{ plan.title }}</h1>
+    <p>Адрес проведения теста: {{ plan.stand_url }}</p>
+    <p>Под каким пользователем проводился тест: {{ plan.stand_user }}</p>
+    <p>Процесс: {{ plan.process }}</p>
+    <p> Вид деятельности: {{ plan.species }}</p>
+
+    <p>Текст плана: <br> {{ plan.text }}</p>
+    <p> Дата создания плана: {{ plan.date }}</p>
+    <p>План создал: {{ plan.user }} </p>
+
+    <a href="{% url 'launcher:launch' %}">На главную</a>
 
 </body>
 </html>
