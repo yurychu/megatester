@@ -1,4 +1,8 @@
 from django.shortcuts import render
+from django.http import HttpResponse
+from reportlab.pdfgen import canvas
+from reportlab.lib.units import cm
+
 from django.views import generic
 from .models import Plans
 from .forms import CreatePlanForm
@@ -36,3 +40,18 @@ class CreatePlan(generic.edit.CreateView):
         form.instance.user = self.request.user
         form.instance.date = timezone.now()
         return super(CreatePlan, self).form_valid(form)
+
+
+def generate(request, id):
+    plan = Plans.objects.get(pk=id)
+
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename=hello.pdf'
+
+    p = canvas.Canvas(response)
+
+    p.drawString(9*cm, 22*cm, plan.text)
+
+    p.showPage()
+    p.save()
+    return response
